@@ -111,7 +111,7 @@ const networks = {
     gasPrice: 1000000000,
     gasLimit: 10000000000,
     accounts: {
-      mnemonic: process.env.MNEMONIC_RINKEBY,
+      mnemonic: process.env.MNEMONIC,
     },
     podDAI: {
       prizePool: "0x4706856FA8Bb747D50b4EF8547FE51Ab5Edc4Ac2",
