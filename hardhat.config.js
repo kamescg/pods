@@ -219,14 +219,14 @@ module.exports = {
       contracts: {},
     },
     // HARDHAT CONFIGURATION - Workaroundfor MetaMask port number
-    development: {
-      url: `http://localhost:8543`,
-      gasPrice: 150000000000,
-      accounts: {
-        mnemonic: process.env.MNEMONIC,
-      },
-      contracts: {},
-    },
+    // development: {
+    //   url: `http://localhost:8543`,
+    //   gasPrice: 150000000000,
+    //   accounts: {
+    //     mnemonic: process.env.MNEMONIC,
+    //   },
+    //   contracts: {},
+    // },
 
     // MAINNET CONFIGURATION
     mainnet: {
