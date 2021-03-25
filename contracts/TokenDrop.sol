@@ -183,14 +183,18 @@ contract TokenDrop is Initializable {
             // Check measure token totalSupply()
             uint256 measureTotalSupply = measure.totalSupply();
 
-            uint256 indexDeltaMantissa =
-                FixedPoint.calculateMantissa(newTokens, measureTotalSupply);
-            uint256 nextExchangeRateMantissa =
-                uint256(exchangeRateMantissa).add(indexDeltaMantissa);
+            // Check measure supply exists
+            if (measureTotalSupply > 0) {
+                uint256 indexDeltaMantissa =
+                    FixedPoint.calculateMantissa(newTokens, measureTotalSupply);
+                uint256 nextExchangeRateMantissa =
+                    uint256(exchangeRateMantissa).add(indexDeltaMantissa);
 
-            exchangeRateMantissa = nextExchangeRateMantissa.toUint112();
-            totalUnclaimed = uint256(totalUnclaimed).add(newTokens).toUint112();
-
+                exchangeRateMantissa = nextExchangeRateMantissa.toUint112();
+                totalUnclaimed = uint256(totalUnclaimed)
+                    .add(newTokens)
+                    .toUint112();
+            }
             // Emit Dripped
             emit Dripped(newTokens);
         }

@@ -1,5 +1,3 @@
-const ethers = require("ethers");
-
 const networks = {
   coverage: {
     url: "http://127.0.0.1:8555",
@@ -11,6 +9,30 @@ const networks = {
     blockGasLimit: 200000000,
     allowUnlimitedContractSize: true,
   },
+  development: {
+    url: `http://localhost:8543`,
+    gasPrice: 150000000000,
+    accounts: {
+      mnemonic: process.env.MNEMONIC,
+    },
+    contracts: {},
+  },
+  hardhat: {
+    gasPrice: 150000000000,
+    gasLimit: 10000000,
+    allowUnlimitedContractSize: true,
+    chainId: 1,
+    accounts: {
+      mnemonic: process.env.MNEMONIC,
+    },
+    forking: {
+      url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
+      blockNumber: 11905343,
+      // blockNumber: 11906000,
+      // blockNumber: 12091705,
+    },
+  },
+
   // MAINNET CONFIGURATION
   mainnet: {
     url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_KEY}`,
@@ -80,6 +102,51 @@ const networks = {
       USDC: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
       COMP: "0xc00e94cb662c3520282e6f5717214004a7f26888",
       WETH: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      POOL: "0x0cec1a9154ff802e7934fc916ed7ca50bde6844e",
+    },
+  },
+  // RINKEBY CONFIGURATION
+  rinkeby: {
+    url: `https://rinkeby.infura.io/v3/${process.env.INFURA_KEY}`,
+    gasPrice: 1000000000,
+    gasLimit: 10000000000,
+    accounts: {
+      mnemonic: process.env.MNEMONIC_RINKEBY,
+    },
+    podDAI: {
+      prizePool: "0x4706856FA8Bb747D50b4EF8547FE51Ab5Edc4Ac2",
+      token: "0x5592EC0cfb4dbc12D3aB100b257153436a1f0FEa",
+      ticket: "0x4FB19557Fbd8D73Ac884eFBe291626fD5641C778",
+      poolToken: "0x0000000000000000000000000000000000000000",
+      feePerDeposit: "10",
+      depositProcessMinimum: "1000",
+      minimumLiquidationAmount: "1000",
+      liquidationFee: "100",
+      chainId: "4",
+      strategy: "0x5E0A6d336667EACE5D1b33279B50055604c3E329",
+    },
+    podUSDC: {
+      prizePool: "0xde5275536231eCa2Dd506B9ccD73C028e16a9a32",
+      token: "0x4dbcdf9b62e891a7cec5a2568c3f4faf9e8abe2b",
+      ticket: "0xb03dc163f2becdd6fa3f44def57e28f1ba95f741",
+      poolToken: "0x0000000000000000000000000000000000000000",
+      feePerDeposit: "30",
+      depositProcessMinimum: "500",
+      minimumLiquidationAmount: "1000",
+      liquidationFee: "100",
+      chainId: "4",
+      strategy: "0x1b92BC2F339ef25161711e4EafC31999C005aF21",
+    },
+    podBAT: {
+      prizePool: "0xab068F220E10eEd899b54F1113dE7E354c9A8eB7",
+      token: "0xbf7a7169562078c96f0ec1a8afd6ae50f12e5a99",
+      ticket: "0xd5eE7cD7A97ccBbf2B1Fb2c92C19515a41720eA5",
+      strategy: "0x41CF0758b7Cc2394b1C2dfF6133FEbb0Ef317C3b",
+      poolToken: "0x0000000000000000000000000000000000000000",
+      feePerDeposit: "30",
+      depositProcessMinimum: "500",
+      minimumLiquidationAmount: "1000",
+      liquidationFee: "100",
     },
   },
 };

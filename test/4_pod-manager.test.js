@@ -1,6 +1,6 @@
-const { ethers, waffle } = require("hardhat");
-const { expect, assert } = require("chai");
 const { utils } = require("ethers");
+const { ethers } = require("hardhat");
+const { expect } = require("chai");
 
 require("./helpers/chaiMatchers");
 const { getConfig } = require("../lib/config");
@@ -13,9 +13,6 @@ const {
   setupContractFactories,
   createPeripheryContract,
 } = require("./utilities/contracts");
-
-CORE_TESTS_RUN = true;
-POOL_TESTS_RUN = true;
 
 describe("PodManager", function() {
   let testing = {};
@@ -71,8 +68,6 @@ describe("PodManager", function() {
 
     // POD TokenDrop Core Settings
     it("should liquidate Pod assets and transfer liquidate assets", async function() {
-      if (!CORE_TESTS_RUN) return;
-
       // USDC.transfer(pod, 1000)
       await testing.USDC.transfer(
         testing.pod.address,
@@ -111,8 +106,6 @@ describe("PodManager", function() {
 
     // POD TokenDrop Core Settings
     it("should withdraw Pod NFT and transfer to PodManager owner", async function() {
-      if (!CORE_TESTS_RUN) return;
-
       // Transfer NFT to Pod
       await testing.podNFT.transferFrom(
         testing.owner.address,
