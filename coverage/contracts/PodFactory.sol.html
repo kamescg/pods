@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>9/9</span>
+        <span class='fraction'>0/9</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,18 +30,18 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/2</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/9</span>
+        <span class='fraction'>0/9</span>
       </div>
     </div>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -185,13 +185,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">48×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">48×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -202,33 +199,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: MIT
@@ -277,15 +277,15 @@ contract PodFactory is ProxyFactory {
     |   Constructor                     |
     |__________________________________*/
     /// @notice Initializes the Factory with an instance of the TokenFaucet
-    constructor(TokenDropFactory _tokenDropFactory) {
+<span class="fstat-no" title="function not covered" >    constructor(TokenDropFactory _tokenDropFactory) {</span>
         // Pod Instance
-        podInstance = new Pod();
+<span class="cstat-no" title="statement not covered" >        podInstance = new Pod()</span>;
 &nbsp;
         // Reference TokenDropFactory
-        tokenDropFactory = _tokenDropFactory;
+<span class="cstat-no" title="statement not covered" >        tokenDropFactory = _tokenDropFactory</span>;
     }
 &nbsp;
-    function create(
+<span class="fstat-no" title="function not covered" >    function create(</span>
         address _prizePoolTarget,
         address _token,
         address _ticket,
@@ -296,10 +296,10 @@ contract PodFactory is ProxyFactory {
         // SETUP Pod Smart Contract w/ Initial Configuration
         // ---------------------------------------------------
         // Pod Deploy
-        Pod pod = Pod(deployMinimal(address(podInstance), ""));
+<span class="cstat-no" title="statement not covered" >        Pod pod = Pod(deployMinimal(address(podInstance), ""));</span>
 &nbsp;
         // Pod Initialize
-        pod.initialize(
+<span class="cstat-no" title="statement not covered" >        pod.initialize(</span>
             _prizePoolTarget,
             _token,
             _ticket,
@@ -309,20 +309,20 @@ contract PodFactory is ProxyFactory {
         );
 &nbsp;
         // Update Owner
-        pod.transferOwnership(msg.sender);
+<span class="cstat-no" title="statement not covered" >        pod.transferOwnership(msg.sender)</span>;
 &nbsp;
         // SETUP TokenDrop Smart Contract w/ Pod Configuration
         // ---------------------------------------------------
-        TokenDrop tokenDrop = tokenDropFactory.create(address(pod), _pool);
+<span class="cstat-no" title="statement not covered" >        TokenDrop tokenDrop = tokenDropFactory.create(address(pod), _pool);</span>
 &nbsp;
         // TokenDrop Pod Initialize - Add Pod to TokenDrop
-        pod.setTokenDrop(address(tokenDrop));
+<span class="cstat-no" title="statement not covered" >        pod.setTokenDrop(address(tokenDrop))</span>;
 &nbsp;
         // Emit LogCreatedPodAndTokenDrop
-        emit LogCreatedPodAndTokenDrop(address(pod), address(tokenDrop));
+<span class="cstat-no" title="statement not covered" >        emit LogCreatedPodAndTokenDrop(address(pod), address(tokenDrop));</span>
 &nbsp;
         // Return Pod/TokenDrop addresses
-        return (address(pod), address(tokenDrop));
+<span class="cstat-no" title="statement not covered" >        return (address(pod), address(tokenDrop));</span>
     }
 }
 &nbsp;</pre></td></tr>
@@ -331,7 +331,7 @@ contract PodFactory is ProxyFactory {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Mar 24 2021 16:24:07 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Mar 24 2021 17:16:59 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

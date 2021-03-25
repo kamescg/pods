@@ -5,6 +5,7 @@ require("hardhat-log-remover");
 // require("hardhat-deploy");
 require("solidity-coverage");
 require("./hardhat.helpers");
+const networks = require("./hardhat.networks");
 const { getConfig } = require("./lib/config");
 
 /**
@@ -202,6 +203,7 @@ module.exports = {
   // Network Configuration
   networks: {
     // HARDHAT CONFIGURATION
+    ...networks,
     hardhat: {
       gasPrice: 150000000000,
       gasLimit: 10000000,
