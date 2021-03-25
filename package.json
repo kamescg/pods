@@ -10,7 +10,7 @@
     "test": "hardhat test",
     "deploy": "hardhat deploy",
     "hint": "solhint \"contracts/**/*.sol\"",
-    "coverage": "yarn clean && USE_LITERAL_CONTENT=false node --max-old-space-size=4096 ./node_modules/.bin/hardhat coverage --network coverage --temp build",
+    "coverage": "yarn hardhat coverage",
     "clean": "rm -rf artifacts build .build-openzeppelin cache coverage coverage.json test-results.xml .cache-openzeppelin abis deployments/localhost deployments/localhost_*",
     "remove-logs": "yarn run hardhat remove-logs",
     "testnet": "yarn hardhat node --port 8544",
