@@ -115,7 +115,7 @@ describe("Pod - Batch Deposits", function() {
       );
       expect(await testing.token.balanceOf(testing.alice.address)).to.equalish(
         toWei("1980"),
-        "000069444444444000"
+        toWei("3")
       );
     });
   });

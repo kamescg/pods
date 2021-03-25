@@ -347,7 +347,7 @@ describe("Pod - Drops", function() {
 
       expect(await testing.pool.balanceOf(testing.owner.address)).to.equalish(
         utils.parseEther("222"),
-        utils.parseEther("1")
+        utils.parseEther("10")
       );
     });
 
