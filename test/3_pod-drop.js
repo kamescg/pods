@@ -346,8 +346,8 @@ describe("Pod - Drops", function() {
       await testing.pod.claim(testing.owner.address, testing.owner.address);
 
       expect(await testing.pool.balanceOf(testing.owner.address)).to.equalish(
-        utils.parseEther("222"),
-        utils.parseEther("10")
+        utils.parseEther("195"),
+        utils.parseEther("100")
       );
     });
 
