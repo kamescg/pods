@@ -77,6 +77,18 @@ describe("Pod - Batch Deposits", function() {
         utils.parseEther("2000")
       );
 
+      // getPricePerShare()
+      const getPricePerShare = await testing.pod.getPricePerShare();
+      expect(getPricePerShare).equal(utils.parseEther("1"));
+      assert.equal(getPricePerShare.toString(), utils.parseEther("1"));
+
+      // getUserPricePerShare() with deposited balance
+      const getUserPricePerShare = await testing.pod.getUserPricePerShare(
+        testing.owner.address
+      );
+
+      expect(getUserPricePerShare).equal(utils.parseEther("1"));
+
       // Control Next Time/Block Increase
       await advanceTimeAndBlock(1);
 

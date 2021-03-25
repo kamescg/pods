@@ -485,7 +485,11 @@ contract Pod is Initializable, ERC20Upgradeable, OwnableUpgradeable, IPod {
      * @dev Price per share for entire pod balances.
      */
     function getPricePerShare() external view override returns (uint256) {
-        return balance().mul(1e18).div(totalSupply());
+        if (totalSupply() > 0) {
+            return balance().mul(1e18).div(totalSupply());
+        } else {
+            return 0;
+        }
     }
 
     /**

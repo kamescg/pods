@@ -1,7 +1,7 @@
 const toWei = ethers.utils.parseEther;
-const toBigNumber = ethers.utils.formatEther;
+const toFormatted = ethers.utils.formatEther;
 
 module.exports = {
   toWei,
-  toBigNumber,
+  toFormatted,
 };

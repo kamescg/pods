@@ -1,10 +1,14 @@
-const { ethers, waffle } = require("hardhat");
+const hardhat = require("hardhat");
+const hre = require("hardhat");
+const { ethers } = require("hardhat");
 const { expect, assert } = require("chai");
-const { utils } = require("ethers");
+const { utils, BigNumber } = require("ethers");
 
 require("./helpers/chaiMatchers");
 const { getConfig } = require("../lib/config");
 const { purchaseToken } = require("../lib/uniswap");
+const { call } = require("./helpers/call");
+const { deployMockContract } = require("./helpers/deployMockContract");
 const { advanceTimeAndBlock } = require("./utilities/time");
 const { toWei } = require("./utilities/bignumbers");
 const {
@@ -22,6 +26,7 @@ describe("Pod - Drops", function() {
   const config = getConfig("mainnet");
 
   before(async () => {
+    provider = hardhat.ethers.provider;
     testing = await setupSigners(testing);
     testing = await setupContractFactories(testing);
     testing = await createPeripheryContract(testing, config);
@@ -241,8 +246,40 @@ describe("Pod - Drops", function() {
         await testing.pool.balanceOf(testing.tokenDrop.address)
       ).to.equalish(utils.parseEther("44"), utils.parseEther("1"));
 
+      // Mock Contract
+      // ------------------------------
+      const POD = await hre.artifacts.readArtifact("Pod");
+      podMock = await deployMockContract(testing.owner, POD.abi, {});
+
+      // expect(
+      //   await podMock.mock.claim.withArgs(
+      //     testing.owner.address,
+      //     testing.owner.address
+      //   )
+      // ).to.equal(BigNumber.from("1000"));
+
       // User Claim POOL allocation
-      await testing.pod.claim(testing.owner.address, testing.owner.address);
+      const claimOwnerStatic = await testing.pod.callStatic.claim(
+        testing.owner.address,
+        testing.owner.address
+      );
+      const claimOwner = await testing.pod.claim(
+        testing.owner.address,
+        testing.owner.address
+      );
+
+      // Transaction Receipt
+      let receipt = await provider.getTransactionReceipt(claimOwner.hash);
+
+      // Event Logs
+      let eventClaimed = testing.pod.interface.parseLog(receipt.logs[2]);
+
+      // Check Call Value
+      expect(claimOwnerStatic).to.equalish(
+        utils.parseEther("44"),
+        utils.parseEther("1")
+      );
+      expect(eventClaimed.name).to.equal("Claimed");
 
       expect(await testing.pool.balanceOf(testing.owner.address)).to.equalish(
         utils.parseEther("44"),
